@@ -1,0 +1,100 @@
+div.dialog {
+  left: 0;
+  padding-top: 1em;
+  position: relative;
+  justify-content: left;
+  display: flex;
+}
+
+p.first-character {
+  color: #d3e4cd;
+}
+
+p.second-character {
+  color: #fff;
+}
+
+div.dialog-container {
+  text-align: left;
+  width: 100%;
+}
+
+.typewriter p {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #d3e4cd;
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s linear infinite;
+  left: 0;
+  position: relative;
+}
+
+.typewriter.done p {
+  border-right: transparent;
+  animation: remove-caret 1s ease-out;
+}
+
+div.button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 3em auto;
+  text-align: center;
+}
+
+button:focus {
+  outline: 0px;
+}
+
+button.next {
+  border-radius: 10px;
+  border: none;
+  background-color: #50564e;
+  width: 7.5em;
+  height: 7.7em;
+  animation:
+    appear 0.5s ease-in,
+    pulse 5s 0.5s ease-in infinite;
+}
+
+button.sync {
+  border-radius: 10px;
+  border: none;
+  background-color: #50564e;
+  width: 7.5em;
+  height: 7.7em;
+  animation:
+    appear 0.5s ease-in,
+    pulse 5s 0.5s ease-in infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0% }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #d3e4cd; }
+}
+
+@keyframes remove-caret {
+  0% { border-color: #d3e4cd; }
+  100% { border-color: transparent; }
+}
+
+@keyframes appear {
+  from { background-color: #91978e }
+  to { background-color: #50564e }
+}
+
+@keyframes pulse {
+  0% { background-color: #50564e }
+  50% { background-color: #d3e4cd }
+  100% { background-color: #50564e }
+}
+

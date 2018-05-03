@@ -1,0 +1,218 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 60px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-drag: element;
+  -webkit-user-drag: element;
+  -khtml-user-drag: element;
+  user-drag: element;
+}
+
+:root {
+  --impassable-color: rgb(22, 167, 211);
+  --passable-color: #c9cdc8;
+  --destructible-color: #000;
+  --start-color: #fff;
+  --end-color: #d3e4cd;
+  --bullet-color: red;
+  --player-color: #fff;
+  --player-cockpit-color: rgb(27, 115, 167);
+  --plop-effect-time: 0.6s;
+  --start-effect-time: 0.9s;
+}
+
+svg {
+  filter: url(#blur)
+}
+
+svg g {
+  fill: var(--passable-color);
+  fill-opacity: 0.6;
+  animation: easein 1s ease-in;
+}
+
+.impassable g {
+  fill: var(--impassable-color);
+  animation: plopin 1.6s ease-in;
+}
+
+.destructible g {
+  fill: var(--destructible-color);
+  animation: plopin 1.6s ease-in;
+}
+
+.start g {
+  fill: var(--start-color);
+  animation: fadein var(--start-effect-time) ease-in;
+}
+
+.end g {
+  fill: var(--end-color);
+  animation: fadein var(--start-effect-time) ease-in;
+}
+
+g.ship {
+  fill: var(--player-color);
+  fill-opacity: 1;
+  animation: fadein 2s ease-in;
+}
+g.cockpit polygon {
+  stroke: var(--player-cockpit-color);
+  stroke-opacity: 0;
+  fill: var(--player-cockpit-color);
+  fill-opacity: 0.8;
+}
+
+g.need-sync polygon {
+  stroke: #fff396;
+  stroke-opacity: 0;
+  fill: #fff396;
+  fill-opacity: 0.8;
+}
+
+g.ennemy circle {
+  fill: var(--destructible-color);
+  fill-opacity: 1;
+  animation: plopin 2s ease-in;
+}
+
+g.ennemy path {
+  opacity: 1;
+  stroke: #fff396;
+  stroke-opacity: 1;
+  stroke-width: 0.1em;
+  animation: fadein 2s ease-in;
+}
+
+circle.bullet {
+  fill: red;
+  animation: col 1s linear infinite;
+}
+
+/* div.dialog-container {
+  height: 500px;
+  overflow: hidden;
+} */
+
+div.fadeout {
+  transition: all 1s ease-out;
+  opacity: 0;
+}
+
+div.fadeout-long {
+  transition: all 4s ease-out;
+  opacity: 0;
+}
+
+p.log {
+  margin: 0;
+  line-height: 1.5em;
+}
+p.log.error {
+  color: #fff396;
+}
+p.log.success {
+  color: #95f6a2;
+}
+
+div.logs {
+  text-align: left;
+  color: var(--player-color);
+  overflow: scroll;
+  height: 114px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@keyframes easein {
+  from { transform: translateX(0) }
+}
+
+@keyframes plopin {
+  0% { opacity: 0; transform: scale(0) }
+  50% { opacity: 0; transform: scale(0.5) }
+  90% { opacity: 0.9; transform: scale(1.2) }
+  100% { opacity: 1; transform: scale(1) }
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  66% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes col {
+  0% {
+    opacity: 0.5;
+    fill: red;
+  }
+  50% {
+    opacity: 1;
+    fill: blueviolet;
+  }
+  100% {
+    opacity: 0.5;
+    fill: red;
+  }
+}
+
+svg g:hover {
+  fill-opacity: 1;
+}
+svg g:hover text {
+  fill-opacity: 1;
+}
+
+svg g polygon {
+  stroke: var(--passable-color);
+  stroke-width: 0.2;
+  transition: fill-opacity 0.2s;
+}
+svg g text {
+  font-size: 0.2em;
+  fill: #000;
+  fill-opacity: 0.9;
+  transition: fill-opacity 0.2s;
+}
+svg path {
+  fill: none;
+  stroke: #c74d07;
+  stroke-width: 0.05em;
+  stroke-opacity: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
